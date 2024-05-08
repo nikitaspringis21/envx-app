@@ -25,6 +25,7 @@ All students suffer from extreme learning overload. Every day, every pupil has t
 - Run the app:
 ```bash
   node server.js
+  npm install
   npm start
 ```
 
