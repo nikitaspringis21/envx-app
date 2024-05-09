@@ -36,33 +36,30 @@ const [title5, setTitle5] = useState('Personīgas aktivitātes');
     const addTask = (setTasks, tasks, activity, setActivity) => {
         const newTasks = [...tasks, { activity }];
         setTasks(newTasks);
-        setActivity('');  // Очистка поля ввода активности
+        setActivity('');  
         const dateString = date;
         localStorage.setItem(`${dateString}_tasks2`, JSON.stringify(newTasks));
         window.dispatchEvent(new Event('storage'));
     };
     
-    //localStorage.clear();
+    
 
     const addTimeSensitiveTask = (setTasks, tasks, activity, time, setActivity, setTime) => {
         if (!time) {
             console.error("Time must be set for time-sensitive tasks.");
-            return; // Прерываем выполнение функции, если время не задано
+            return; 
         }
         const newTask = { activity, time, completed: false };
         const newTasks = [...tasks, newTask];
         newTasks.sort((a, b) => (a.time && b.time) ? a.time.localeCompare(b.time) : 0);
         setTasks(newTasks);
-        setActivity(''); // Очистка поля ввода активности
-        setTime(''); // Очистка поля ввода времени
-        const dateString = date; // используйте дату из контекста
-        const tasksKey = `${dateString}_right${tasks.length % 2 + 1}`; // выбор ключа в зависимости от количества задач
+        setActivity('');
+        setTime(''); 
+        const dateString = date; 
+        const tasksKey = `${dateString}_right${tasks.length % 2 + 1}`; 
         localStorage.setItem(tasksKey, JSON.stringify(newTasks));
-        window.dispatchEvent(new Event('storage')); // для обновления состояния в других компонентах
+        window.dispatchEvent(new Event('storage')); 
     };
-    
-    
-    //localStorage.clear();
 
     const navigate = useNavigate();
 
